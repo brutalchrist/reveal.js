@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Angular JS - Universidad Autónoma de Chile 2018</title>
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Sebastián González">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="../../css/reveal.css">
+        <link rel="stylesheet" href="../../css/theme/black.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+        <style>
+            img {
+                background: none !important;
+            }
+            .stephen {
+                opacity: 0.2;
+                position: fixed;
+                margin: 5% auto;
+                right: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <img class="plain" src="img/5rabbits.png" alt="">
+                </section>
+                <section>
+                    <h2>Fast!</h2>
+                    <h3>Desarrollo de aplicaciones web</h3>
+                    <!-- <img class="plain stephen" src="img/stephen.jpg" alt=""> -->
+                    <p>
+                        <small><a href="http://www.github.com/brutalchrist">Sebastián González V.</a></small>
+                    </p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Front-End</h2>
+                    </section>
+                    <section>
+                        <ul id="fragments">
+                            <li class="fragment fade-up">React</li>
+                            <li class="fragment fade-up"><b>AngularJS</b></li>
+                            <li class="fragment fade-up">Vue.js</li>
+                            <li class="fragment fade-up">Backbone.js</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <img class="plain" src="img/angular.png" alt="">
+                    </section>
+                    <section>
+                        <ul id="fragments">
+                            <li class="fragment fade-up">JavaScript Framework <span class="fragment fade-up">(yep, another one)</span></li>
+                            <li class="fragment fade-up">Single-page Application</span></li>
+                            <li class="fragment fade-up">Frontend MVC</span></li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <img class="plain" src="img/react.png" alt="">
+                </section>
+                <section>
+                    <section>
+                        <h2>Back-End</h2>
+                    </section>
+                    <section>
+                        <ul id="fragments">
+                            <li class="fragment fade-up">Node.js</li>
+                            <li class="fragment fade-up">Java</li>
+                            <li class="fragment fade-up">PHP</li>
+                            <li class="fragment fade-up">Go</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>API Rest</h2>
+                        <span>/v1/api/rest</span>
+                    </section>
+                    <section>
+                        <ul id="fragments">
+                            <li class="fragment fade-up">Node.js -> Sails.js</li>
+                            <li class="fragment fade-up">Java -> Jeresey</li>
+                            <li class="fragment fade-up">PHP -> Laravel</li>
+                            <li class="fragment fade-up">Go -> Mux</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <img class="plain" src="img/sails.png" alt="">
+                </section>
+                <section data-background="https://media.giphy.com/media/5xaOcLLyNsTBTjfM5DG/giphy.gif">
+                    <h1>Let's go to Code!</h1>
+                </section>
+                <section>
+                    <h2>Urls</h2>
+                    <ul>
+                        <li><a href="https://github.com/mgechev/angular-seed">Angular Seed</a></li>
+                        <li><a href="https://www.npmjs.com/package/angularseedcli">as2cli</a></li>
+                        <li><a href="https://sailsjs.com">Sails.js</a></li>
+                        <li><a href="https://github.com/brutalchrist/ua2018">Example code</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Muchas gracias</h2>
+                    <p>sgonzalez@debianchile.cl</p>
+                </section>
+            </div>
+        </div>
+        <script src="../../lib/js/head.min.js"></script>
+        <script src="../../js/reveal.js"></script>
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '../../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../../plugin/search/search.js', async: true },
+                    { src: '../../plugin/zoom-js/zoom.js', async: true },
+                    { src: '../../plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>
