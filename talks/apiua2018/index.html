@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>API REST - Universidad Autónoma de Chile 2018</title>
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Sebastián González">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="../../css/reveal.css">
+        <link rel="stylesheet" href="../../css/theme/black.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+        <style>
+            img {
+                background: none !important;
+            }
+            .stephen {
+                opacity: 0.2;
+                position: fixed;
+                margin: 5% auto;
+                right: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>API REST</h2>
+                    <h3></h3>
+                    <!-- <img class="plain stephen" src="img/stephen.jpg" alt=""> -->
+                    <p>
+                        <small><a href="http://www.github.com/brutalchrist">Sebastián González V.</a></small>
+                    </p>
+                </section>
+                <section>
+                    <h2>API</h2>
+                    <p class="fragment fade-up"><i>Application Programming Interface</i></p>
+                </section>
+                <section>
+                    <section>
+                        <h2>REST</h2>
+                        <p class="fragment fade-up"><i>Representational State Transfer</i></p>
+                    </section>
+                    <section>
+                        <h2>Restricciones</h2>
+                        <ul id="fragments">
+                            <li class="fragment fade-up">Cliente 🙈 Servidor</li>
+                            <li class="fragment fade-up">Sin sesiones</li>
+                            <li class="fragment fade-up">Cacheable</li>
+                            <li class="fragment fade-up">Interfaz uniforme</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Terminologías</h2>
+                    </section>
+                    <section>
+                        <h2>Recurso</h2>
+                        <pre><code class="json">
+"person":  {
+    "name": "Roy Fielding",
+    "birthdate": 1965,
+    "death_date": null
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Colección</h2>
+                        <pre><code class="json">
+"people":  [
+    {
+        "name": "Roy Fielding",
+        "birthdate": 1965,
+        "death_date": null
+    },
+    {
+        "name": "Stephen Hawking",
+        "birthdate": 1942,
+        "death_date": 2018
+    }
+]
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>URL</h2>
+                        <code>http://data.world/people</code>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Endpoints</h2>
+                    </section>
+                    <section>
+                        <ul>
+                            <li><code>http://data.world/addPerson</code></li>
+                            <li><code>http://data.world/updatePerson</code></li>
+                            <li><code>http://data.world/deletePerson</code></li>
+                            <li><code>http://data.world/getPerson</code></li>
+                            <li class="fragment fade-up"><code>http://data.world/movePersonToAnotherLocation</code></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>¿Qué está mal?</h2>
+                        <ul>
+                            <li class="fragment fade-up"><code>http://data.world/addPerson</code></li>
+                            <li class="fragment fade-up"><code>add => Person</code></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>¿Cuál es la forma correcta?</h2>
+                        <h2 class="fragment fade-up">¡No actions!</h2>
+                        <code class="fragment fade-up">http://data.world/person</code>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>HTTP Methods</h2>
+                    </section>
+                    <section>
+                        <q>La URL es una oración, donde los recursos son los sustantivos y los métodos HTTP son los verbos</q>
+                        <p class="fragment fade-up" style="text-align: end;">Agustín Arenas (1960 - 2018)</p>
+                    </section>
+                    <section>
+                        <h2>REST Client</h2>
+                        <ul>
+                            <li><a href="https://insomnia.rest/">Insomnia</a></li>
+                            <li><a href="https://www.getpostman.com/">Postman</a></li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>GET</h2>
+                    </section>
+                    <section>
+                        <h3>Request</h3>
+                        <code>http://data.world/people</code>
+                    </section>
+                    <section>
+                        <h3>Response</h3>
+                        <pre><code class="json">
+[
+    {
+        "id": 1,
+        "name": "Roy Fielding",
+        "birthdate": 1965,
+        "death_date": null
+    },
+    {
+        "id": 2,
+        "name": "Stephen Hawking",
+        "birthdate": 1942,
+        "death_date": 2018
+    }
+]
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Request</h3>
+                        <code>http://data.world/people/1</code>
+                    </section>
+                    <section>
+                        <h3>Response</h3>
+                        <pre><code class="json">
+{
+    "id": 1,
+    "name": "Roy Fielding",
+    "birthdate": 1965,
+    "death_date": null
+}
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>POST</h2>
+                    </section>
+                    <section>
+                        <h3>Request</h3>
+                        <code>http://data.world/people</code>
+                        <pre><code class="json">
+{
+    "name": "Ada Lovelace",
+    "birthdate": 1815,
+    "death_date": 1851
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Response</h3>
+                        <pre><code class="json">
+{
+    "id": "3",
+    "name": "Ada Lovelace",
+    "birthdate": 1815,
+    "death_date": 1851
+}
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>PATCH</h2>
+                    </section>
+                    <section>
+                        <h3>Request</h3>
+                        <code>http://data.world/people/3</code>
+                        <pre><code class="json">
+{
+    "death_date": 1852
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Response</h3>
+                        <pre><code class="json">
+{
+    "id": "3",
+    "name": "Ada Lovelace",
+    "birthdate": 1815,
+    "death_date": 1852
+}
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>DELETE</h2>
+                    </section>
+                    <section>
+                        <h3>Request</h3>
+                        <code>http://data.world/people/3</code>
+                    </section>
+                    <section>
+                        <h3>Response</h3>
+                        <pre><code class="json">
+{
+    "id": "3",
+    "name": "Ada Lovelace",
+    "birthdate": 1815,
+    "death_date": 1852
+}
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2><a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">Other methods</a></h2>
+                    <ul>
+                        <li class="fragment fade-up">PUT</li>
+                        <li class="fragment fade-up">HEAD</li>
+                        <li class="fragment fade-up">TRACE</li>
+                        <li class="fragment fade-up">OPTIONS</li>
+                        <li class="fragment fade-up">CONNECT</li>
+                    </ul>
+                </section>
+                <section>
+                    <section>
+                        <h2>Status codes</h2>
+                    </section>
+                    <section>
+                        <h2>2xx (Success)</h2>
+                        <ul>
+                            <li class="fragment fade-up">200 Ok</li>
+                            <li class="fragment fade-up">201 Created</li>
+                            <li class="fragment fade-up">204 No Content</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>4xx (Client Error)</h2>
+                        <ul>
+                            <li class="fragment fade-up">400 Bad Request</li>
+                            <li class="fragment fade-up">401 Unauthorized</li>
+                            <li class="fragment fade-up">403 Forbidden</li>
+                            <li class="fragment fade-up">404 Not Found</li>
+                            <li class="fragment fade-up">410 Gone</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>5xx (Server Error)</h2>
+                        <ul>
+                            <li class="fragment fade-up">500 Internal Server Error</li>
+                            <li class="fragment fade-up">503 Service Unavailable</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Sorting</h2>
+                        <code class="fragment fade-up">http://data.world/people?sort_by=birthdate.asc</code>
+                    </section>
+                    <section>
+                        <h2>Filtering</h2>
+                        <code class="fragment fade-up">http://data.world/people?birthdate=null</code>
+                    </section>
+                    <section>
+                        <h2>Searching</h2>
+                        <code class="fragment fade-up">http://data.world/people?search=name:lovelace</code>
+                    </section>
+                    <section>
+                        <h2>Pagination</h2>
+                        <code class="fragment fade-up">http://data.world/people?limit=20</code>
+                        <code class="fragment fade-up">http://data.world/people?limit=20&offset=20</code>
+                        <code class="fragment fade-up">http://data.world/people?limit=20&offset=40</code>
+                    </section>
+                </section>
+                <section>
+                    <h2>Versioning</h2>
+                    <code class="fragment fade-up">http://data.world/v2/people</code>
+                </section>
+                <section data-background="https://media.giphy.com/media/5xaOcLLyNsTBTjfM5DG/giphy.gif">
+                    <h1>Let's go to Code!</h1>
+                </section>
+                <section>
+                    <h2>Sebastián González</h2>
+                    <code>sgonzalez@debianchile.cl</code>
+                </section>
+            </div>
+        </div>
+        <script src="../../lib/js/head.min.js"></script>
+        <script src="../../js/reveal.js"></script>
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '../../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../../plugin/search/search.js', async: true },
+                    { src: '../../plugin/zoom-js/zoom.js', async: true },
+                    { src: '../../plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>
