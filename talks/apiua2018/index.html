@@ -331,6 +331,189 @@
                     <h1>Let's go to Code!</h1>
                 </section>
                 <section>
+                    <h2>Day 2</h2>
+                </section>
+                <section>
+                    <section>
+                        <h2>Security</h2>
+                    </section>
+                    <section>
+                        <ul>
+                            <li class="fragment fade-up">Basic Auth</li>
+                            <li class="fragment fade-up">API Token</li>
+                            <li class="fragment fade-up">OAuth</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <code>http://data.world/login</code>
+                    </section>
+                    <section>
+                        <h3>Request</h3>
+                        <pre><code class="json">
+{
+    "username": "sgonzalez",
+    "password": "permiso"
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Response</h3>
+                        <pre><code class="json">
+{
+    "user": "5b6cfadd31b3bf98088ca4aa",
+    "authtoken": "c7cf46a72ca61c8b943c427d2fac4e6a"
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="bash">
+$ curl -X PATCH --header \
+    "authtoken: c7cf46a72ca61c8b943c427d2fac4e6a" \
+    http://data.world/people
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Documentation</h2>
+                    </section>
+                    <section>
+                        <ul>
+                            <li class="fragment fade-up"><a href="http://apidocjs.com/">Apidoc</a></li>
+                            <li class="fragment fade-up"><a href="https://swagger.io/docs/">Swagger</a></li>
+                            <li class="fragment fade-up"><a href="https://swagger.io/docs/">Swagger</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <code class="bash">
+                            $ yarn global add apidoc
+                        </code>
+                    </section>
+                    <section>
+                        <pre><code class="javascript">
+/**
+* @api {get} /people/:id Request People information
+* @apiName GetPerson
+* @apiGroup People
+*
+* @apiParam {Number} id Person unique ID.
+*
+* @apiSuccess {Number} id Person id.
+* @apiSuccess {String} name Name of the Person.
+* @apiSuccess {Number} birthdate Birthdate of the Person.
+* @apiSuccess {Number} death_date Date of dead of the Person.
+*/
+                        </code></pre>
+                    </section>
+                    <section>
+                        <code class="bash">
+                            $ apidoc -i controllers/ -o public/
+                        </code>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>RESTHooks</h2>
+                    </section>
+                    <section>
+                        <img src="img/resthook.png" alt="">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Subscriptions</h2>
+                    </section>
+                    <section>
+                        <h3>Endpoints</h3>
+                        <ul>
+                            <li class="fragment fade-up"><code>GET http://data.world/webhooks/</code></li>
+                            <li class="fragment fade-up"><code>POST http://data.world/webhooks/</code></li>
+                            <li class="fragment fade-up"><code>GET http://data.world/webhooks/:id/</code></li>
+                            <li class="fragment fade-up"><code>PUT http://data.world/webhooks/:id/</code></li>
+                            <li class="fragment fade-up"><code>DLTE http://data.world/webhooks/:id/</code></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Webhooks model</h3>
+                        <img src="img/webhook_model.png" alt="">
+                    </section>
+                    <section>
+                        <h3>Request</h3>
+                        <pre><code class="json">
+{
+    "resource": "people",
+    "events": "create,update",
+    "target": "https://data.world/person_updates"
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Response</h3>
+                        <pre><code class="json">
+{
+    "id": 12345,
+    "resource": "people",
+    "events": "create,update",
+    "target": "https://data.world/person_updates",
+    "active": true,
+    "last_status": 200,
+    "last_success_at": null,
+    "last_failure_at": null,
+    "last_failure_content": null
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Destination verification</h3>
+                        <img src="img/webhook_verification.png" alt="">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Events</h2>
+                    </section>
+                    <section>
+                        <ul>
+                            <li class="fragment fade-up"><code>people.create</code></li>
+                            <li class="fragment fade-up"><code>people.update</code></li>
+                            <li class="fragment fade-up"><code>people.delete</code></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <code>https://data.world/webhook_events</code>
+                        <pre><code class="json">
+[
+    { "resource": "people", "event": "people.create" }
+    { "resource": "people", "event": "people.update" }
+    { "resource": "people", "event": "people.create" }
+]
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Send hook</h2>
+                    </section>
+                    <section>
+                        <pre><code class="json">
+{
+    "event": {
+        "name": "people.create",
+        "resource": "people"
+        "resource_id": 4,
+        "user_id": 12
+    },
+    "resource": {
+        "id": 4,
+        "name": "Luis Alberto Spinetta",
+        "birthdate": 1950,
+        "death_date": 2012
+    }
+}
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
                     <h2>Sebastián González</h2>
                     <code>sgonzalez@debianchile.cl</code>
                 </section>
